@@ -3,22 +3,29 @@
  */
 package http.pg;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import http.pg.stores.MangaStore;
 
 class LibraryTest {
-    @Test
-    void someLibraryMethodReturnsTrue() {
-        Library classUnderTest = new Library();
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
-    }
-
     @Test
     void echoReturnsString() throws Exception {
         Library classUnderTest = new Library();
         String message = "Hello World";
         String result = classUnderTest.getEcho(message);
-        assertEquals(result, message);
+        assertEquals(message, result);
+    }
+
+    @Test
+    void searchMangaReturnsNotError() throws Exception {
+        String id = "259dfd8a-f06a-4825-8fa6-a2dcd7274230";
+        Properties properties = new Properties();
+        properties.put("id", id);
+        MangaStore mangaStore = new MangaStore(properties);
+        mangaStore.fetch();
+        String title = mangaStore.getTitle();
+        assertEquals("Yofukashi no Uta", title);
     }
 }
