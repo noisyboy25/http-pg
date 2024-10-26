@@ -5,6 +5,8 @@ package http.pg;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 
 import http.pg.stores.MangaStore;
@@ -27,5 +29,6 @@ class LibraryTest {
         mangaStore.fetch();
         String title = mangaStore.getTitle();
         assertEquals("Yofukashi no Uta", title);
+        assertEquals(mangaStore.getUpdatedAt().getClass(), Date.class);
     }
 }

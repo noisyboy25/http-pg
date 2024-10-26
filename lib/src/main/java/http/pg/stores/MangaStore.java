@@ -22,8 +22,9 @@ public class MangaStore {
   private static final HttpClient client = HttpClient.newHttpClient();
   private static final Gson gson = new Gson();
 
-  String id = null;
-  Manga manga = null;
+  private String id = null;
+
+  private Manga manga = null;
 
   public MangaStore(Properties properties) {
     id = String.valueOf(properties.get("id"));
@@ -43,14 +44,14 @@ public class MangaStore {
 
     MangaByTitleResponse mangaByTitleResponse = gson.fromJson(response.body(), MangaByTitleResponse.class);
 
-    manga = mangaByTitleResponse.data;
+    manga = mangaByTitleResponse.getData();
   }
 
   public String getTitle() {
-    return manga.attributes.title.get("en");
+    return this.manga.getAttributes().getTitle().get("en");
   }
 
   public Date getUpdatedAt() {
-    return manga.attributes.updatedAt;
+    return manga.getAttributes().getUpdatedAt();
   }
 }

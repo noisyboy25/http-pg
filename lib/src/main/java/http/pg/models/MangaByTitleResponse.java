@@ -3,24 +3,33 @@ package http.pg.models;
 import java.util.Date;
 import java.util.Map;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class MangaByTitleResponse {
-  public ResultType result;
-  public Manga data;
+  private String result;
+  private Manga data;
 
+  @Getter
+  @Setter
   public class Manga {
-    public String id;
-    public Attributes attributes;
+    private String id;
+    private Attributes attributes;
 
+    @Getter
+    @Setter
     public class Attributes {
-      public Map<String, String> title;
-      public Map<String, String>[] altTitles;
-      public Map<String, String> description;
-      public String publicationDemographic;
-      public String status;
-      public int year;
-      public String publicRating;
-      public Date createdAt;
-      public Date updatedAt;
+      private Map<String, String> title;
+      private Map<String, String>[] altTitles;
+      private Map<String, String> description;
+      private String publicationDemographic;
+      private String status;
+      private int year;
+      private String publicRating;
+      private Date createdAt;
+      private Date updatedAt;
     }
   }
 }
