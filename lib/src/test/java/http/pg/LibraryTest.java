@@ -21,7 +21,7 @@ class LibraryTest {
     }
 
     @Test
-    void searchMangaReturnsNotError() throws Exception {
+    void getMangaByIdReturnsTitleAndUpdatedAt() throws Exception {
         String id = "259dfd8a-f06a-4825-8fa6-a2dcd7274230";
         Properties properties = new Properties();
         properties.put("id", id);
