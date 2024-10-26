@@ -15,8 +15,8 @@ import java.net.http.HttpRequest;
 
 import http.pg.Properties;
 import http.pg.RequestException;
-import http.pg.models.MangaByTitleResponse;
-import http.pg.models.MangaByTitleResponse.Manga;
+import http.pg.models.MangaByIdResponse;
+import http.pg.models.MangaByIdResponse.Manga;
 
 public class MangaStore {
   private static final HttpClient client = HttpClient.newHttpClient();
@@ -42,7 +42,7 @@ public class MangaStore {
       throw new RequestException(String.valueOf(response.statusCode()));
     }
 
-    MangaByTitleResponse mangaByTitleResponse = gson.fromJson(response.body(), MangaByTitleResponse.class);
+    MangaByIdResponse mangaByTitleResponse = gson.fromJson(response.body(), MangaByIdResponse.class);
 
     manga = mangaByTitleResponse.getData();
   }

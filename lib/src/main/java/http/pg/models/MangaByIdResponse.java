@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MangaByTitleResponse {
+public class MangaByIdResponse {
   private String result;
   private Manga data;
 
